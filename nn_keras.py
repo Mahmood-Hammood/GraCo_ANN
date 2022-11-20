@@ -1,3 +1,4 @@
+# Example of neural network in keras
 # first neural network with keras tutorial
 from numpy import loadtxt
 from tensorflow import keras

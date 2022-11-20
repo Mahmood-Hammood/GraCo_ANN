@@ -1,12 +1,18 @@
+# Example of neural network using labeled inputs
+# Train model and make predictions
+import numpy
 import pandas
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.utils import np_utils
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-from sklearn.pipeline import Pipeline
+
+# fix random seed for reproducibility
+seed = 7
+numpy.random.seed(seed)
+
 # load dataset
 dataframe = pandas.read_csv("dataset_labeled.csv", header=None)
 dataset = dataframe.values
@@ -30,6 +36,11 @@ def baseline_model():
 	return model
  
 estimator = KerasClassifier(build_fn=baseline_model, epochs=200, batch_size=5, verbose=0)
-kfold = KFold(n_splits=10, shuffle=True)
-results = cross_val_score(estimator, X, dummy_y, cv=kfold)
-print("Baseline: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
+#kfold = KFold(n_splits=10, shuffle=True)
+#results = cross_val_score(estimator, X, dummy_y, cv=kfold)
+#print("Baseline: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
+X_train, X_test, Y_train, Y_test = train_test_split(X, dummy_y, test_size=0.33, random_state=seed)
+estimator.fit(X_train, Y_train)
+predictions = estimator.predict(X_test)
+print(predictions)
+print(encoder.inverse_transform(predictions))
