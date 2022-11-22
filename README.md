@@ -1,2 +1,2 @@
 # GraCo Framework Artificial Neural Network
-Laboratório de Sistemas Embarcados - Universidade Federal do Rio Grande do Sul
+LSE (Laboratório de Sistemas Embarcados) of UFRGS(Universidade Federal do Rio Grande do Sul)
