@@ -11,7 +11,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import Pipeline
-from keras.optimizers import SGD
+from tensorflow.keras.optimizers import SGD
 
 #load dataset
 dataset = loadtxt('dataset.csv', delimiter=',')
