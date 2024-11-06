@@ -26,8 +26,8 @@ X_test = dataset[:,0:16]
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Dense(32, input_dim=16, activation='relu'))
-	model.add(Dense(7, activation='softmax'))
+	model.add(Dense(32, input_dim=16, activation='relu'))  #hidden layer 32 neurons
+	model.add(Dense(7, activation='softmax'))            #output layer 7 neurons
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer=SGD(learning_rate=0.02, momentum=0.7), metrics=['accuracy'])
 	return model
